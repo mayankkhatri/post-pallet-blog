@@ -3,8 +3,12 @@
 body {
   font-family: Poppins, sans-serif;
   box-sizing: border-box;
+  margin: 0;
 }
 
+main {
+  margin: 0 2%;
+}
 header {
   display: flex;
   justify-content: space-between;
@@ -13,6 +17,7 @@ header {
   border: 1px solid #ebeaeb;
   box-shadow: 0.5px 0.5px 4px rgba(0, 0, 0, 0.03),
     -0.5px -0.5px 4px rgba(0, 0, 0, 0.03);
+
   margin-bottom: 1.5rem;
 }
 
@@ -56,10 +61,6 @@ p {
   border-radius: 5px;
   border: 1px solid #4d4d4fbc;
   margin-left: 10px;
-}
-
-main {
-  padding: 15px;
 }
 
 .post {
