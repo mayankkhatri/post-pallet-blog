@@ -3,26 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog</title>
+    <title>Xtasy Blog</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
-      <input type="text" id="search-box" placeholder="Search by post number" />
-    </header>
-    <main>
-      <section id="trending-posts">
-        <h2>Trending Posts</h2>
-        <div class="posts"></div>
-      </section>
-      <section id="all-posts">
-        <h2>All Posts</h2>
-        <div class="posts"></div>
-      </section>
-      <div id="search-results">
-        <div class="posts"></div>
+      <h1 class="logo">Xtasy</h1>
+      <div class="socials">
+        <a href="https://www.instagram.com" class="insta" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.twitter.com" class="twitter" target="_blank">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.reddit.com" class="reddit" target="_blank">
+          <i class="fa-brands fa-reddit"></i>
+        </a>
       </div>
-    </main>
+    </header>
+
+    <div class="search-container">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        id="search-box"
+        placeholder="Search post by number..."
+      />
+    </div>
+    <div id="search-results">
+      <div class="posts"></div>
+    </div>
+    <div id="trending-posts">
+      <h2>Trending Videos</h2>
+      <div class="posts"></div>
+    </div>
+    <div id="all-posts">
+      <h2>All Post's</h2>
+      <div class="posts"></div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/2d81199916.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
   </body>
 </html>

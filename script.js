@@ -19,9 +19,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         } }, skip: ${(page - 1) * limit}, first: ${limit}) {
           id
           title
-          content {
-            html
-          }
           imageLink
           postNumber
           trending
@@ -31,6 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           network
           likes
           views
+          token
        
         }
       }
@@ -74,19 +72,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function createPostElement(post) {
-    const postElement = document.createElement("div");
+    const postElement = document.createElement("a");
     postElement.className = "post";
+    postElement.href = `${post.token}`;
     postElement.innerHTML = `
-      <h3>${post.title}</h3>
-      <img src="${post.imageLink}" alt="${post.title}">
-      <p>${post.content.html}</p>
-      <p>Actors: ${post.actors}</p>
-      <p>Network: ${post.network}</p>
-      <p>Likes: ${post.likes}</p>
-      <p>Views: ${post.views}</p>
-      <p>Post Number: ${post.postNumber}</p>
-      <p>Category: ${post.category}</p>
-      <!-- Add any other relevant data fields here -->
+      <div class="image-container"><img src="${post.imageLink}" alt="${post.title}" /></div>
+  <div class="post-details">
+    <div class="post-meta">
+    <p class="post-number"><strong>Post Number:</strong> <span class="red">${post.postNumber}</span></p>
+      <p class="likes"><strong>Likes:</strong> ${post.likes}</p>
+      <p class="views"><strong>Views:</strong> ${post.views}</p>
+    </div>
+    <h3 class="title">${post.title}</h3>
+    <div class="video-meta">
+      <p class="actors"><strong>Actors:</strong> ${post.actors}</p>
+      <p class="network"><strong>Network:</strong> ${post.network}</p>
+      <p class="category"><strong>Category:</strong> ${post.category}</p>
+    </div>
+  </div>
     `;
     return postElement;
   }
@@ -97,9 +100,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         posts(where: { postNumber: ${postNumber} }) {
           id
           title
-          content {
-            html
-          }
           imageLink
           postNumber
           trending
@@ -138,6 +138,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Display search results if posts are found
         searchResults.forEach((post) => {
           const postElement = createPostElement(post);
+          const searchHeding = document.createElement("h2");
+          searchHeding.innerText = "Search Results";
+          searchResultsContainer.appendChild(searchHeding);
           searchResultsContainer.appendChild(postElement);
         });
       } else {
