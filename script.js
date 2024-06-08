@@ -25,6 +25,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           imageLink
           postNumber
           trending
+          imageLink
+          category
+          actors
+          network
+          likes
+          views
+       
         }
       }
     `;
@@ -73,6 +80,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       <h3>${post.title}</h3>
       <img src="${post.imageLink}" alt="${post.title}">
       <p>${post.content.html}</p>
+      <p>Actors: ${post.actors}</p>
+      <p>Network: ${post.network}</p>
+      <p>Likes: ${post.likes}</p>
+      <p>Views: ${post.views}</p>
+      <p>Post Number: ${post.postNumber}</p>
+      <p>Category: ${post.category}</p>
+      <!-- Add any other relevant data fields here -->
     `;
     return postElement;
   }
@@ -89,6 +103,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           imageLink
           postNumber
           trending
+          category
+          actors
+          network
+          likes
+          views
         }
       }
     `;
@@ -115,10 +134,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       searchResultsContainer.innerHTML = ""; // Clear previous search results
 
-      searchResults.forEach((post) => {
-        const postElement = createPostElement(post);
-        searchResultsContainer.appendChild(postElement);
-      });
+      if (searchResults.length > 0) {
+        // Display search results if posts are found
+        searchResults.forEach((post) => {
+          const postElement = createPostElement(post);
+          searchResultsContainer.appendChild(postElement);
+        });
+      } else {
+        // Display "Post Not Found" message if no posts are found
+        const notFoundMessage = document.createElement("div");
+        notFoundMessage.textContent = "Post Not Found";
+        searchResultsContainer.appendChild(notFoundMessage);
+      }
     } else {
       searchResultsContainer.innerHTML = ""; // Clear search results when input is empty
     }
