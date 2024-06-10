@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Board App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 600px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .input-group {
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+
+      button {
+        padding: 10px;
+        border: none;
+        background: #5cb85c;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #4cae4c;
+      }
+
+      .topic {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .topic h2 {
+        margin-top: 0;
+      }
+
+      .child-input-group {
+        display: flex;
+        margin-top: 10px;
+      }
+
+      .child-input-group input {
+        flex: 1;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 5px;
+      }
+
+      .child {
+        margin-top: 5px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo Board App</h1>
+      <div class="input-group">
+        <input
+          type="text"
+          id="main-topic-input"
+          placeholder="Add a main topic..."
+        />
+        <button onclick="addMainTopic()">Add Main Topic</button>
+      </div>
+      <div id="board"></div>
+    </div>
+    <script>
+      function addMainTopic() {
+        const mainTopicInput = document.getElementById("main-topic-input");
+        const mainTopicText = mainTopicInput.value.trim();
+
+        if (mainTopicText) {
+          const board = document.getElementById("board");
+          const topicDiv = document.createElement("div");
+          topicDiv.className = "topic";
+
+          const topicTitle = document.createElement("h2");
+          topicTitle.innerText = mainTopicText;
+
+          const childInputGroup = document.createElement("div");
+          childInputGroup.className = "child-input-group";
+
+          const childInput = document.createElement("input");
+          childInput.type = "text";
+          childInput.placeholder = "Add a child element...";
+
+          const childButton = document.createElement("button");
+          childButton.innerText = "Add Child";
+          childButton.onclick = function () {
+            addChild(topicDiv, childInput);
+          };
+
+          childInputGroup.appendChild(childInput);
+          childInputGroup.appendChild(childButton);
+
+          topicDiv.appendChild(topicTitle);
+          topicDiv.appendChild(childInputGroup);
+          board.appendChild(topicDiv);
+
+          mainTopicInput.value = "";
+        }
+      }
+
+      function addChild(topicDiv, childInput) {
+        const childText = childInput.value.trim();
+
+        if (childText) {
+          const childDiv = document.createElement("div");
+          childDiv.className = "child";
+          childDiv.innerText = childText;
+
+          topicDiv.appendChild(childDiv);
+          childInput.value = "";
+        }
+      }
+    </script>
+  </body>
+</html>

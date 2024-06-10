@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div class="image-container"><img src="${post.imageLink}" alt="${post.title}" /></div>
   <div class="post-details">
     <div class="post-meta">
-    <p class="post-number"><strong>Post Number:</strong> <span class="red">${post.postNumber}</span></p>
+    <p class="post-number"><strong>Post No:</strong> <span class="red">${post.postNumber}</span></p>
       <p class="likes"><strong>Likes:</strong> ${post.likes}</p>
       <p class="views"><strong>Views:</strong> ${post.views}</p>
     </div>
